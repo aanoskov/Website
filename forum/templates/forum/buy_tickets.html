@@ -1,0 +1,12 @@
+{% extends 'forum/base.html' %}
+{% block subcontent %}
+
+<form method="POST">
+    {% csrf_token %}
+    <table>{{ form }}</table>
+    <input type="submit" value="Book tickets"/>
+</form>
+{% if error %}
+<p style="color:green;">{{ error }}</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'frontend/base.html' %}
+{% block content %}
+{% load static %}
+<div class="container">	
+	<div class="promo">
+		<div class="promo-title">Карта гостя Санкт-Петербурга</div>
+		<p>Удобный способ знакомства с городом!</p>
+	</div>
+</div>    	
+
+<section class="features1">
+	<div class="container">
+		<div class="wrap">
+			<div class="box box1">
+				<div class="text1">
+					<h2>Карта гостя</h2>
+					<img src="{% static 'forum/box1.jpg' %}" alt="box1">
+					<ol>
+						<li>Свободный вход в 80+ музеев и экскурсий на 2, 3, 5 или 7 дней</li>
+						<li>Транспортный билет</li>
+						<li>Карманный путеводитель</li>
+						<li> Скидки от партнеров до 50% в ресторанах, отелях, сувенирных магазинах бессрочно.</li>
+					</ol>
+				</div>
+			</div>
+			<div class="box box2">
+				<div class="text2">
+					<h2>Купить Карту Гостя онлайн</h2>
+					<img src="{% static 'forum/box2.png' %}" alt="box2">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="features2">
+	<div class="container">
+		<div class="wrap">
+			<div class="box box3">
+				<div class="text3">
+					<h2>Акции</h2>
+					<a href=""><img src="{% static 'forum/box3.jpg' %}" alt="box3"></a>
+				</div>
+			</div>
+			<div class=" box box4">
+				<div class="text4">
+					<h2>Путеводитель</h2>
+					<img src="{% static 'forum/box4.jpg' %}" alt="box4">
+					<p>К Карте Гостя Санкт-Петербурга прилагается подробный путеводитель на 200 страницах. 
+						В нем вы найдете описания популярных и менее известных, но не менее интересных достопримечательностей; скидки и специальные предложения, действующие при предъявлении 
+						Карты Гостя; карту исторического центра и другую полезную информацию</p>		    					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="arrow">
+	<a href="#top"><img src="{% static 'forum/arrow.png' %}"></a>
+</div>
+
+{% endblock %}

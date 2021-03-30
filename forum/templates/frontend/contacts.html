@@ -1,0 +1,68 @@
+{% extends 'frontend/base.html' %}
+{% block content %}
+{% load static %}
+<section class="contacts">
+    <div class="container">
+        <div class="map">
+            <h2>Контакты</h2>
+            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af3b1d11e09fa67c4242553620439d9d7b9ec9604d7b75b8992995035622bae46&amp;width=734&amp;height=400&amp;lang=ru_RU&amp;scroll=true">
+            </script>
+        </div>
+        <div class="right-map">
+            <div class="add">
+                <h3>Почта для связи</h3>
+                <p>info@petersburgcard.com</p>
+            </div>
+            <div class="add">
+                <h3>Адрес</h3>
+                <p>Чернышевская<br>
+                    191014, Россия, г. Санкт-Петербург,<br>
+                    ул. Артиллерийская, д.1,<br>
+                    БЦ «Европа Хаус», офис 634<br>
+                    +7 (812) 604-00-42 (с 10.00 - 19.00)
+                </p>
+            </div>
+            <div class="add">
+                <h3>График работы</h3>
+                <p>Понедельник-пятница с 10:00 до 19:00
+                    Суббота, воскресенье, государственные праздники — выходной
+                </p>
+            </div>
+        </div>
+        <div class="consult">
+            <h2>Наши консультанты всегда рады Вам помочь!</h2>
+            <img src="{% static 'forum/style.css' %}static/forum/consultant.png">
+        </div>
+            <div class="consultant-form">
+                <form class="mainform" >
+                        <p class="name">
+                            <input type="text" name="name" value="Ваше имя" onblur="if(this.value.length == 0) this.value = 'Ваше имя'" onfocus="if(this.value == 'Ваше имя') this.value = '' "/>
+                            <label for="name">Имя</label>
+                        </p>
+                    
+                    <p class="phone-num">
+                            <input type="text" name="phone-num" value="+7(999)1234567" onblur="if(this.value.length == 0) this.value = '+7(999)1234567'" onfocus="if(this.value == '+7(999)1234567') this.value = '' " />
+                            <label for="phone-num" >Телефон</label>
+                    </p>
+                    <p class="number">
+                            <input type="text" name="number" value="Количество человек" onblur="if(this.value.length == 0) this.value = 'Количество человек'" onfocus="if(this.value == 'Количество человек') this.value = '' " />
+                            <label for="number" >Кол-во людей</label>
+                        </p>
+                        <p class="days">
+                            <input type="text" name="days" value="Количество дней(2,3,5,7)" onblur="if(this.value.length == 0) this.value = 'Количество дней(2,3,5,7)'" onfocus="if(this.value == 'Количество дней(2,3,5,7)') this.value = '' " />
+                            <label for="days" >Кол-во дней</label>
+                        </p>
+                        <p class="send" >
+                        <input id="knopka" type="submit" value="Отправить"  />
+                    </p>
+                </form>
+                <script src="{% static 'forum/form.js' %}"></script>
+            </div>
+    </div>
+</section>
+
+<div class="arrow">
+        <a href="#top"><img src="{% static 'forum/arrow.png' %}"></a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'forum/css/style.css' %}">
+{% if request.user.is_authenticated %}
+<p class='container'><h2 class='forum-welcome'>Welcome, {{ request.user.username }}! </h2><a href="{% url 'logout' %}?next={{ request.path }}">Log out</a></p>
+{% else %}
+<p class='container'><h2 class='forum-welcome'>Welcome, stranger!</h2> Please, <a href="{% url 'login' %}?next={{ request.path }}">login</a>
+or <a href="{% url 'signup' %}"> sign up</a></p>
+{% endif %}
+<a href="{% url 'buy_tickets' %}"> Buy Tickets</a>
+<hr/>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% block subcontent %}{% endblock %}
+</body>
+</html>
+{% endblock %}

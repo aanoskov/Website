@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+    	<link rel="stylesheet" href="{% static 'forum/css/style.css' %}">
+        <meta charset="utf-8">
+        <title>{% block title %}О КАРТЕ{% endblock %}</title>
+    </head>
+    <body>
+    	<header class="main-header" id="top">
+    		<div class="container">
+    			<div class="header-top">
+    				<div class="logo">
+    					<a href="{% url 'index' %}"><img src="{% static 'forum/logo.png' %}" alt="logo"></a>
+    				</div>
+    				<div class="main-menu">
+                        <div class="name-menu">
+                            <img src="{% static 'forum/menu-icon.png' %}">
+                            <a>МЕНЮ САЙТА</a>
+        					<ul class="sub-menu">
+        						<li class="ico1"><a class="now" href="{% url 'card' %}">
+        							<i></i>
+        							О карте
+        						</a></li>
+        						<li class="ico2"><a href="{% url 'economy' %}">
+        							<i></i>
+        							Экономия
+        						</a></li>
+        						<li class="ico3"><a href="{% url 'rules' %}">
+        							<i></i>
+        							Как использовать
+        						</a></li>
+        						<li class="ico4"><a href="#">
+        							<i></i>
+        							Где купить
+        						</a></li>				
+        						<li class="ico5"><a href="{% url 'contacts' %}">
+        							<i></i>
+        							Контакты
+        						</a></li>
+								<li class="ico6"><a href="http://127.0.0.1:8000/forum">
+        							<i></i>
+        							Форум
+        						</a></li>
+        					</ul>
+                        </div>
+    				</div>
+                    <div class="phone">
+                        <p>Телефон: +7 (905) 866-89-53</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <footer class="main-footer">
+			<div class="container">
+				<div class="footer-top">
+					<div class="footer-menu">
+						<h3> О карте</h3>
+						<ul>
+							<li><a href="">Карта гостя</a></li>
+							<li><a href="">Новости и события</a></li>
+							<li><a href="">Партнеры</a></li>
+							<li><a href="">О компании</a></li>
+							<li><a href="">FAQ</a></li>
+						</ul>
+					</div>
+					<div class="footer-menu">
+						<h3>Что включено</h3>
+						<ul>
+							<li><a href="">Музеи</a></li>
+							<li><a href="">Экскурсии</a></li>
+							<li><a href="">Транспорт</a></li>
+							<li><a href="">Специальные предложения</a></li>
+						</ul>
+					</div>
+					<div class="footer-menu">
+						<h3>Где купить</h3>
+						<ul>
+							<li><a href="">Пункты выдачи и продажи</a></li>
+							<li><a href="">Купить онлайн</a></li>
+							<li><a href="">Пользовательское соглашение</a></li>
+						</ul>
+					</div>
+					<div class="footer-menu">
+						<h3>Контакты</h3>
+						<ul>
+							<li>+7 (812) 604-00-42</li>
+							<li>Санкт-Петербург,</li>
+							<li>ул. Артиллерийская, 1</li>
+							<li>офис 634, 642</li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<img src="{% static 'forum/logo-footer.png' %}">
+                    <p>2019 © Карта Гостя Санкт‑Петербурга - единая электронная карта для туристов</p>
+				</div>
+			</div>
+		</footer>
+    </body>
+</html>

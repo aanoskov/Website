@@ -1,0 +1,11 @@
+{% extends 'forum/base.html' %}
+{% block subcontent %}
+<p>If you want to create new Forum Section, <a href="{% url 'create_section' %}">CLICK HERE</a></p>
+<h2>
+    <ul>
+        {% for blog in blogs %}
+        <li><a href="{% url 'blog_by_id' blog.id %}">{{ blog.title }}</a></li>
+        {% endfor %}
+    </ul>
+</h2>
+{% endblock %}
