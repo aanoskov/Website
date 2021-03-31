@@ -24,6 +24,11 @@ class CreatingSection(forms.Form):
     password = forms.CharField(label='Password', min_length=3, max_length=128, widget=forms.PasswordInput)
     
 
+class CreatingPost(forms.Form):
+    subject = forms.CharField(label="Post Subject", max_length=80)
+    text = forms.CharField(label="Text", max_length=4096, widget=forms.Textarea(attrs={'class': 'form-control', 'cols': 80, 'rows': 10,'placeholder': 'Write something about this place'}))
+    review_image = forms.ImageField(label="photo", required=False)
+
 buy_choices =(
     (1, "1"),
     (2, "2"),

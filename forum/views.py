@@ -1,5 +1,5 @@
 from .models import Blog, Post, Order
-from .forms import LoginForm, RegistrationForm, CreatingSection, BuyTickets
+from .forms import LoginForm, RegistrationForm, CreatingSection, BuyTickets, CreatingPost
 
 from django.http import HttpResponse, Http404, HttpResponseRedirect, HttpResponseForbidden
 from django.template import loader
@@ -100,29 +100,20 @@ def create_post(request, blog_id):
     blog = get_object_or_404(Blog, id=blog_id)
     if blog.author_id != request.user.id:
         return HttpResponseForbidden('You are not allowed to post in this blog!')
-
-    subject = request.POST['subject']
-    text = request.POST['text']
-    subject_error = None
-    text_error = None
-    if not subject or subject.isspace():
-        subject_error = 'Please provide non-empty subject'
-    
-    if not text or text.isspace():
-        text_error = 'Please provide non-empty text'
-    
-    if subject_error or text_error:
-        error_context = {
-            'subject_error': subject_error,
-            'text_error': text_error, 
-            'subject': subject,
-            'text': text
-        }
-        return render_blog(request, blog_id, error_context)
+    if request.method == 'POST':
+        form = CreatingPost(request.POST, request.FILES)
+        if form.is_valid():
+            #logout(request)
+            subject = form.cleaned_data['subject']
+            text = form.cleaned_data['text']
+            saved_image = form.cleaned_data['review_image']
+            Post.objects.create(blog=blog, subject=subject, text=text, review_image=saved_image).save()
+            context = {'blog_id': blog.id}
+            return HttpResponseRedirect(reverse('blog_by_id', kwargs=context) ) 
     else:
-        Post(blog_id=blog_id, subject=request.POST['subject'], text=request.POST['text']).save()
-        return HttpResponseRedirect(reverse('blog_by_id', kwargs={'blog_id': blog_id}) )
-        
+        form = CreatingPost()
+    return render_blog(request, blog.id, {'form': form})
+     
 
 @login_required(login_url='/forum/login')
 def create_section(request):
@@ -140,7 +131,7 @@ def create_section(request):
             elif user is None:
                 form.add_error('password', 'Password mismatch! Enter account password')
             else:
-                blog = Blog.objects.create(author=user, title=blog_title, opened=opened)
+                blog = Blog.objects.create(author=user, title=blog_title, opened=opened).save()
                 context = {'blog': blog, 'posts': []}
                 if not opened:
                     return render(request, 'forum/section.html', context)

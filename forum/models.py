@@ -18,6 +18,7 @@ class Post(Model):
     text = TextField(max_length=4096)
     created_at=  DateTimeField('creation timestamp', auto_now_add=True)
     updated_at = DateTimeField('update timestamp', auto_now=True)
+    review_image = ImageField(null=True, blank=True, upload_to="images/")
 
     
     def __str__(self):
